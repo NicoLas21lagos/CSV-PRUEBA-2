@@ -5,6 +5,7 @@ import com.opencsv.CSVReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -30,11 +31,18 @@ public class Main {
                 cuentas.add(cuenta);
             }
 
+            List<Cuenta> ordenadas = ordenarNombresAalaZ(cuentas);
+            ordenadas.forEach(System.out::println);
+
             for (Cuenta c: cuentas){
                 System.out.println(c);
             }
         } catch (Exception e){
             throw new RuntimeException(e);
         }
+    }
+    public static List<Cuenta> ordenarNombresAalaZ(List<Cuenta> cuentas) {
+        cuentas.sort(Comparator.comparing(Cuenta::getNombre));
+        return cuentas;
     }
 }
