@@ -51,6 +51,8 @@ public class Cuenta {
         this.cantidadFotos = cantidadFotos;
     }
 
+
+
     @Override
     public String toString() {
         return "Cuenta{" +
