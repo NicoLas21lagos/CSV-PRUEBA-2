@@ -58,7 +58,7 @@ public class Main {
                 }
             }
 
-            // Recopilamos las cuentas con el número máximo de seguidores
+
             for (Cuenta cuenta : cuentas) {
                 if (cuenta.getSeguidores() == maxSeguidores) {
                     resultado.add(cuenta);
