@@ -15,12 +15,12 @@ public class Main {
         List<Cuenta> cuentas = new ArrayList<>();
 
 
-        try(CSVReader sr = new CSVReader(new InputStreamReader(inputStream))){
-            String [] linea;
+        try (CSVReader sr = new CSVReader(new InputStreamReader(inputStream))) {
+            String[] linea;
 
             sr.readNext();
 
-            while ((linea = sr.readNext()) != null){
+            while ((linea = sr.readNext()) != null) {
                 String nombre = linea[0];
                 int seguidos = Integer.parseInt(linea[1]);
                 int seguidores = Integer.parseInt(linea[2]);
@@ -30,11 +30,41 @@ public class Main {
                 cuentas.add(cuenta);
             }
 
-            for (Cuenta c: cuentas){
+            for (Cuenta c : cuentas) {
                 System.out.println(c);
             }
-        } catch (Exception e){
+
+            // Obtener las cuentas con más seguidores
+            List<Cuenta> topCuentas = obtenerCuentasConMasSeguidores(cuentas);
+            System.out.println(
+
+            );
+            System.out.println("Cuenta(s) con más seguidores:");
+            for (Cuenta c : topCuentas) {
+                System.out.println(c);
+            }
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+        public static List<Cuenta> obtenerCuentasConMasSeguidores(List<Cuenta> cuentas) {
+            List<Cuenta> resultado = new ArrayList<>();
+            int maxSeguidores = Integer.MIN_VALUE;
+
+            // Encontramos el número máximo de seguidores
+            for (Cuenta cuenta : cuentas) {
+                if (cuenta.getSeguidores() > maxSeguidores) {
+                    maxSeguidores = cuenta.getSeguidores();
+                }
+            }
+
+            // Recopilamos las cuentas con el número máximo de seguidores
+            for (Cuenta cuenta : cuentas) {
+                if (cuenta.getSeguidores() == maxSeguidores) {
+                    resultado.add(cuenta);
+                }
+            }
+            return resultado;
+        }
+
 }
