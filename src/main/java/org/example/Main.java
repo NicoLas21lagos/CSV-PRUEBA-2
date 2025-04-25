@@ -5,6 +5,7 @@ import com.opencsv.CSVReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -12,6 +13,7 @@ public class Main {
     public static void main(String[] args) {
 
         InputStream inputStream = Main.class.getClassLoader().getResourceAsStream("data/cuentas.csv");
+
         List<Cuenta> cuentas = new ArrayList<>();
 
 
@@ -33,8 +35,16 @@ public class Main {
             for (Cuenta c: cuentas){
                 System.out.println(c);
             }
+
+            ordenarNombresAalaZ(cuentas);
+
         } catch (Exception e){
             throw new RuntimeException(e);
         }
+    }
+
+    public static List<Cuenta> ordenarNombresAalaZ(List<Cuenta> cuentas) {
+        cuentas.sort(Comparator.comparing(Cuenta::getNombre)); // Ordena por nombre de la A a la Z
+        return cuentas;
     }
 }

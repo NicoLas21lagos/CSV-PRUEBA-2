@@ -17,6 +17,43 @@ public class Cuenta {
         this.cantidadFotos = cantidadFotos;
     }
 
+    //Getter
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getSeguidores() {
+        return seguidores;
+    }
+
+    public int getCantidadFotos() {
+        return cantidadFotos;
+    }
+
+    public int getSeguidos() {
+        return seguidos;
+    }
+
+    //Setter
+
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setSeguidos(int seguidos) {
+        this.seguidos = seguidos;
+    }
+
+    public void setSeguidores(int seguidores) {
+        this.seguidores = seguidores;
+    }
+
+    public void setCantidadFotos(int cantidadFotos) {
+        this.cantidadFotos = cantidadFotos;
+    }
+
     @Override
     public String toString() {
         return "Cuenta{" +
