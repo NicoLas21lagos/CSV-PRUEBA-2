@@ -31,10 +31,10 @@ public class Main {
                 cuentas.add(cuenta);
             }
 
-            ordenarNombresAalaZ(cuentas);
+            List<Cuenta> ordenados = ordenarNombresAalaZ(cuentas);
 
             System.out.println("Nombres ordenados A-Z:");
-            for (Cuenta c: cuentas){
+            for (Cuenta c: ordenados){
                 System.out.println(c);
             }
 
