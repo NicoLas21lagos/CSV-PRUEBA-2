@@ -5,6 +5,7 @@ import com.opencsv.CSVReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -15,12 +16,12 @@ public class Main {
         List<Cuenta> cuentas = new ArrayList<>();
 
 
-        try (CSVReader sr = new CSVReader(new InputStreamReader(inputStream))) {
-            String[] linea;
+        try(CSVReader sr = new CSVReader(new InputStreamReader(inputStream))){
+            String [] linea;
 
             sr.readNext();
 
-            while ((linea = sr.readNext()) != null) {
+            while ((linea = sr.readNext()) != null){
                 String nombre = linea[0];
                 int seguidos = Integer.parseInt(linea[1]);
                 int seguidores = Integer.parseInt(linea[2]);
@@ -30,7 +31,10 @@ public class Main {
                 cuentas.add(cuenta);
             }
 
-            for (Cuenta c : cuentas) {
+            List<Cuenta> ordenadas = ordenarNombresAalaZ(cuentas);
+            ordenadas.forEach(System.out::println);
+
+            for (Cuenta c: cuentas){
                 System.out.println(c);
             }
 
@@ -46,6 +50,10 @@ public class Main {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+    public static List<Cuenta> ordenarNombresAalaZ(List<Cuenta> cuentas) {
+        cuentas.sort(Comparator.comparing(Cuenta::getNombre));
+        return cuentas;
     }
         public static List<Cuenta> obtenerCuentasConMasSeguidores(List<Cuenta> cuentas) {
             List<Cuenta> resultado = new ArrayList<>();
