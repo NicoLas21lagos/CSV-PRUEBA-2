@@ -31,9 +31,9 @@ public class Main {
                 cuentas.add(cuenta);
             }
 
-            List<Cuenta> ordenadas = ordenarNombresAalaZ(cuentas);
-            ordenadas.forEach(System.out::println);
+            ordenarNombresAalaZ(cuentas);
 
+            System.out.println("Nombres ordenados A-Z:");
             for (Cuenta c: cuentas){
                 System.out.println(c);
             }
